@@ -1,0 +1,16 @@
+= simple_form_for @wiki, html: { multipart: true } do |f|
+  - if @wiki.errors.any?
+    #errors
+      %h2
+      = pluralize(@wiki.errors.count, "error")
+      prevented this Wiki from saving
+      %u1
+        - @wiki.errors.full_messages.each do |msg|
+        %li= msg
+.form-group
+   = f.input :title, input_html: {class: 'form-control'}
+.form-group
+   = f.input :body, input_html: {class: 'form-control'}
+.form-group
+   = f.input :private, input_html: {class: 'form-control'}
+= f.button :submit, class: "btn btn-primary"
