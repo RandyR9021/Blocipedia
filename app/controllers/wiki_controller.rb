@@ -17,7 +17,7 @@ class WikiController < ApplicationController
       flash[:error] = "Wiki couldn't be saved. Please try again."
       render :new
     end
-  end 
+  end
 
   def new
     @wiki = Wiki.new
@@ -31,6 +31,8 @@ class WikiController < ApplicationController
 
   def destroy
   end
+
+  private
 
   def wiki_params
     params.require(:wiki).permit(:title, :body, :private)
