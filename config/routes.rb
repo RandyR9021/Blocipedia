@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :wikis
-  root  'wiki#index'
+  root to:  'wikis#index'
 end
