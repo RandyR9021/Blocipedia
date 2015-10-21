@@ -1,7 +1,9 @@
 class WikiController < ApplicationController
+  before_action :find_wiki, only: [:show]
+  before_action :authenticate_user!
 
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.all.order("created_at DESC")
   end
 
   def show
@@ -21,6 +23,7 @@ class WikiController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def update
@@ -35,7 +38,7 @@ class WikiController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+    params.require(:wiki).permit(:title, :body, :private, :user)
 end
 
   def find_wiki
