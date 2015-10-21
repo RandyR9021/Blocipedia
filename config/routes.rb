@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :wikis
-  root to:  'wiki#index'
+
+  root to:  'wikis#index'
 end

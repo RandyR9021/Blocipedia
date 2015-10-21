@@ -5,6 +5,7 @@
   %p
     Published at
     = wiki.created_at.strftime('%b %d, %Y')
-  %p= truncate(wiki.content, length: 250)
+  %p= truncate(wiki.body, length: 250)
+  
 
 = link_to "New Wiki", new_wiki_path
