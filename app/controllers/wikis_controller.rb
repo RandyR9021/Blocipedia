@@ -26,8 +26,8 @@ class WikisController < ApplicationController
  end
 
  def update
-   @wiki = current_user.wiki.find(params[:id])
-   if @wiki.update_attributes(params[:wiki])
+   @wiki = Wiki.find(params[:id])
+   if @wiki.update_attributes(wiki_params)
      flash[:notice] = "Wiki was successfully updated."
      redirect_to wikis_path
    else
@@ -36,7 +36,7 @@ class WikisController < ApplicationController
  end
 
  def edit
-   @wiki = current_user.wiki(params[:id])
+   @wiki = Wiki.find(params[:id])
  end
 
  def destroy
