@@ -1,11 +1,8 @@
-%h1 Welcome to Blocipedia!!!!
-
 - @wikis.each do |wiki|
   %h2= wiki.title
   %p
     Published at
     = wiki.created_at.strftime('%b %d, %Y')
-  %p= truncate(wiki.body, length: 250)
-  
-
-= link_to "New Wiki", new_wiki_path
+  %p= truncate(wiki.body, length: 200)
+- if user_signed_in?
+  = link_to "New Wiki", new_wiki_path

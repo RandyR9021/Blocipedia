@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
 
  def index
@@ -10,7 +11,7 @@ class WikisController < ApplicationController
  end
 
  def create
-   @wiki = Wiki.new(params.require(:wiki).permit(:title, :body, :private))
+   @wiki = current_user.wikis.build(wiki_params)
    if @wiki.save
      flash[:notice] = "Wiki was successfully created!"
      redirect_to @wiki
@@ -21,13 +22,21 @@ class WikisController < ApplicationController
  end
 
  def new
-   @wiki = Wiki.new
+   @wiki = current_user.wikis.build
  end
 
  def update
+   @wiki = current_user.wiki.find(params[:id])
+   if @wiki.update_attributes(params[:wiki])
+     flash[:notice] = "Wiki was successfully updated."
+     redirect_to wikis_path
+   else
+     render "edit"
+   end
  end
 
  def edit
+   @wiki = current_user.wiki(params[:id])
  end
 
  def destroy
