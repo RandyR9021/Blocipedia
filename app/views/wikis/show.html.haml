@@ -1,4 +1,8 @@
-%h1= @wikis.title
-%p= @wikis.body
+%h1= @wiki.title
+%p= @wiki.content
 
-= link_to "Home", root_path
+.btn-group
+	= link_to "Back", root_path, class: "btn btn-default"
+	- if user_signed_in?
+		= link_to "Edit", edit_wiki_path(@wiki), class: "btn btn-default"
+		= link_to "Delete", wiki_path(@wiki), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
