@@ -7,7 +7,7 @@ class WikisController < ApplicationController
  end
 
  def show
-   @wikis = Wiki.find(params[:id])
+   @wiki = Wiki.find(params[:id])
  end
 
  def create
@@ -43,7 +43,7 @@ class WikisController < ApplicationController
    @wiki = Wiki.find(params[:id])
    if @wiki.destroy
      flash[:notice] = "Wiki was successfully deleted."
-     redirect_to to wikis_path
+     redirect_to wikis_path
    else
      flash[:error] = "Wiki couldn't be deleted. Please try again."
      render :show

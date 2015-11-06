@@ -7,8 +7,13 @@
 	= csrf_meta_tags
 %body
 
+
 %nav.navbar.navbar-default
 	.container
+
 		.navbar-brand= link_to "Blocipedia", root_path
 		.navbar-brand= link_to "New Wiki", new_wiki_path
-= yield
+		.navbar-brand= link_to "Sign Up", new_user_registration_path
+		.navbar-brand= link_to "Sign In", new_user_session_path
+.container
+	= yield

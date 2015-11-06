@@ -1,4 +1,4 @@
-class PostPolicy < ApplicationPolicy
+class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -9,3 +9,4 @@ class PostPolicy < ApplicationPolicy
   def update?
     user.present?
   end
+end
