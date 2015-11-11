@@ -1,0 +1,32 @@
+.container.header
+  .inner-wrapper
+    .row
+      %h1 Create. Share. Collaborate.
+.container.outer-wrapper.pricing
+  .inner-wrapper
+    .row
+      .col-lg-4.col-lg-offset-2.col-md-4.col-md-offset-2.col-xs-12.standard-features
+        %h3
+          Standard Account
+          %br/
+          %small Free
+        %p Create public wikis.
+        %p Edit public wikis.
+        %p
+          %span Upgrade to Premium.
+        %p
+          %span
+            %em We love Blocipedia!
+        %a.btn.btn-primary.btn-md.blue-button{:href => new_user_registration_path, :role => "button"}
+          Sign up!
+      .col-lg-4.col-md-4.col-xs-12.premium-features
+        %h3
+          Premium Account
+          %br/
+          %small $10/mo
+        %p Create public wikis.
+        %p.background-tinted Edit public wikis.
+        %p Create private wikis.
+        %p Add collaborators to private wikis.
+        %a.btn.btn-primary.btn-md.blue-button{:href => new_user_registration_path, :role => "button"}
+          Sign up!

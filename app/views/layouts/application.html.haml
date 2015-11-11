@@ -1,19 +1,39 @@
-!!! 5
+!!!
 %html
-%head
-	%title Blocipedia
-	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-	= javascript_include_tag 'application', 'data-turbolinks-track' => true
-	= csrf_meta_tags
-%body
-
-
-%nav.navbar.navbar-default
-	.container
-
-		.navbar-brand= link_to "Blocipedia", root_path
-		.navbar-brand= link_to "New Wiki", new_wiki_path
-		.navbar-brand= link_to "Sign Up", new_user_registration_path
-		.navbar-brand= link_to "Sign In", new_user_session_path
-.container
-	= yield
+  %head
+    %title blocipedia
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+      = stylesheet_link_tag    'application', media: 'all'
+      = javascript_include_tag 'application'
+      = csrf_meta_tags
+  %body
+    .container.custom-nav-styles
+      .inner-wrapper
+        %ul.nav.nav-tabs
+          %li.blocipedia-logo= link_to 'Blocipedia', root_url
+          %li
+            = link_to 'Wikis', wikis_path
+          %li
+            = link_to 'New Wiki', new_wiki_path
+          .user-info.pull-right
+            - if current_user
+              Hello!
+              \#{link_to current_user.email, edit_user_registration_path}
+              \#{link_to 'Sign out', destroy_user_session_path, method: :delete}
+            - else
+              = link_to 'Sign In', new_user_session_path
+              or
+              \#{link_to 'Sign Up', new_user_registration_path}
+    - if flash[:notice]
+      .alert.alert-success
+        %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+        = flash[:notice]
+    - elsif flash[:error]
+      .alert.alert-danger
+        %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+        = flash[:error]
+    - elsif flash[:alert]
+      .alert.alert-warning
+        %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+        = flash[:alert]
+    = yield
