@@ -51,8 +51,6 @@ class ApplicationPolicy
     record.class
   end
 
-  # --------------------------- Utility methods --------------------------------
-
   def record_exists?
     scope.where(:id => record.id).exists?
   end

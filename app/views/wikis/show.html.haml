@@ -2,6 +2,6 @@
 %p= @wiki.body
 .btn-group
 	= link_to "Back", root_path, class: "btn btn-default"
-	- if user_signed_in?
+	- if policy(@wiki).edit?
 		= link_to "Edit", edit_wiki_path(@wiki), class: "btn btn-default"
 		= link_to "Delete", wiki_path(@wiki), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"

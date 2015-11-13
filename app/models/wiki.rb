@@ -16,4 +16,5 @@ class Wiki < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_many :collaborators
+  scope :visible_to, ->(user, viewable = false) { user ? all : where(private: viewable) }
 end

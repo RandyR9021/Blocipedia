@@ -3,7 +3,7 @@ class WikisController < ApplicationController
 
 
  def index
-   @wikis = Wiki.all.order("created_at DESC")
+   @wikis = Wiki.visible_to(current_user)
  end
 
  def show
@@ -53,6 +53,6 @@ class WikisController < ApplicationController
  private
 
  def wiki_params
-   params.require(:wiki).permit(:title, :body, :private, :category_id, :user)
+   params.require(:wiki).permit(:title, :body, :private, :public, :category_id, :user)
  end
 end
