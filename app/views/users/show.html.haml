@@ -2,15 +2,16 @@
   = @user.name || @user.email
   's profile
 %div
-  = form_for @user do |f|
-    .form-group
-      = radio_button_tag(:role, 'standard')
-      = label_tag(:role, 'standard')
-      %br/
-      = radio_button_tag(:role, 'premium')
-      = label_tag(:role, 'premium')
-      %br/
-      = radio_button_tag(:role, 'admin')
-      = label_tag(:role, 'admin')
-    .form-group
-      = f.submit "Save", class: 'btn btn-success'
+  = @user.role
+  -# = form_for @user do |f|
+  -#   .form-group
+  -#     = radio_button_tag(:role, 'standard')
+  -#     = label_tag(:role, 'standard')
+  -#     %br/
+  -#     = radio_button_tag(:role, 'premium')
+  -#     = label_tag(:role, 'premium')
+  -#     %br/
+  -#     = radio_button_tag(:role, 'admin')
+  -#     = label_tag(:role, 'admin')
+  -#   .form-group
+  -#     = f.submit "Save", class: 'btn btn-success'

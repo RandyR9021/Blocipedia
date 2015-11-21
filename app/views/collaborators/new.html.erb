@@ -1,0 +1,14 @@
+<%= form_for [@wiki, @collaborator] do |f| %>
+  <h4><%= f.label :user_id, 'Add New Collaborators' %></h4>
+  <%= f.collection_select(:user_id, @users, :id, :name) %><br/><br/>
+  <%= f.submit class: 'btn btn-success' %>
+<%end%>
+<!-- -# %h1 Add Collaborator
+-# = form_for |@wiki, @collaborator| do |f|
+-#   - if @wikis.errors.any?
+-#   .alert.alert-danger
+-#   %h4
+-#     There are #{pluralize(@wiki.errors.count, "error")}
+-#   %u1
+-#   - @wiki.errors.full_messages.each do |msg|
+-# = form_group_tag(@wiki.errors[:user]) do -->
